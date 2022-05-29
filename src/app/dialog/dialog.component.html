@@ -1,0 +1,139 @@
+<div>
+
+
+<form [formGroup]="dialog_form" (ngSubmit)="SubmitForm()">
+    <div>
+    <h2 style="background: #3f51b5 ;color: white;" mat-dialog-title>{{title}}</h2>
+    <mat-dialog-content class="mat-typography">
+
+        <div style="width: 70vw;">
+                <div class="row">
+                    <div class="col-4 formLabelClass">Quote Id</div>
+                    <div class="col-8 formControlClass"> <input readonly style="background-color: gainsboro;"
+                            formControlName="QuoteID" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 formLabelClass">Quote Type</div>
+                    <div class="col-8 formControlClass">
+                        <select formControlName="name" (change)="changeQuoteType($event)">
+                            <option > </option>
+                            <option >DIY</option>
+                            <option>BF</option>
+                            <option >DIY1</option>
+                           
+                          </select>
+                        <span class="errorClass" *ngIf="QuoteType.invalid && (QuoteType.dirty || QuoteType.touched)">
+                            *Required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 formLabelClass">Contact</div>
+                    <div class="col-8 formControlClass">
+                        <input formControlName="Contact" type="text">
+                        <span class="errorClass" *ngIf="Contact.invalid && (Contact.dirty || Contact.touched)">
+                            *Required</span>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 formLabelClass">TaskType</div>
+                    <div class="col-8 formControlClass">
+                        <input type="text" formControlName="TaskType">
+                        <span class="errorClass" *ngIf="TaskType.invalid && (TaskType.dirty || TaskType.touched)">
+                            *Required</span>
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 formLabelClass" style="margin-top: 5%;">Due Date</div>
+                    <div class="col-8">
+
+                        <table style="width: auto;">
+                            <tr>
+                                <td></td>
+                                <td> </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <mat-form-field id="date-form-field">
+                                        <mat-label></mat-label>
+                                        <input style="width: 100%;text-align: center" matInput [matDatepicker]="picker"
+                                            formControlName="DueDate" (dateInput)="addEvent('input', $event)">
+                                        <mat-datepicker-toggle matSuffix [for]="picker">
+
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+
+                                    </mat-form-field>
+
+
+                                </td>
+                                <td style="padding-top: 12px;">
+                                    <div class="abc">
+                                        <mat-icon>keyboard_arrow_up</mat-icon>
+                                    </div>
+                                    <div class="abcd"> <input style="height: 100%;width: 100%;" type="text" [value]="hours|number : '1.0-0'"> </div>
+                                    <div class="abc">
+                                        <mat-icon>keyboard_arrow_down</mat-icon>
+                                    </div>
+                                </td>
+
+                                <td style="padding-top: 12px;">
+                                    <div class="abc">
+                                        <mat-icon>keyboard_arrow_up</mat-icon>
+                                    </div>
+                                    <div class="abcd">
+                                        <input  style="height: 100%;width: 100%; ;" type="text" [value]="minutes |number : '2.0-0'">
+                                    </div>
+                                    <div class="abc">
+                                        <mat-icon>keyboard_arrow_down</mat-icon>
+                                    </div>
+                                </td>
+                                <td style="padding-top: 12px;">
+                                    <div class="abcd"> <input style="height: 100%;width: 100%;" value="AM" type="text">
+
+                                    </div>
+                                </td>
+                                <td> <span class="errorClass"
+                                        *ngIf="DueDate.invalid && (DueDate.dirty || DueDate.touched)"> *Required</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-4 formLabelClass">Task</div>
+                    <div class="col-8"> <textarea style="width: 100%; " formControlName="Task"></textarea>
+                        <span class="errorClass"
+                            *ngIf="Task.invalid && (Task.dirty || Task.touched)"> *Required</span>
+
+                    </div>
+                </div>
+
+
+                  </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button type="submit" mat-button [mat-dialog-close]="true" cdkFocusInitial>Submit</button>
+    </mat-dialog-actions>
+
+</div>
+</form>
+ 
+</div>

@@ -1,0 +1,47 @@
+<div class="container">
+    <table class="table table-borderless">
+      <tr>
+        <td colspan="2" >
+         
+        
+          <img height="200" width="250" *ngIf="quote.Contact =='Manager' || quote.Contact == 'sale person' || quote.Contact =='sale man'else notfound "  src="assets/{{quote.Contact|lowercase}}.png">
+       
+        </td>
+        </tr>
+      
+      <tr>
+          <td class="lblclass">Quote ID</td>
+          <td class="dtaclass">{{quote.QuoteID}}</td>
+        </tr>
+        <tr>
+            <td class="lblclass">QuoteType</td>
+            <td class="dtaclass" >{{quote.QuoteType}}</td>
+          </tr>
+          <tr>
+            <td class="lblclass">Contact </td>
+            <td  class="dtaclass">{{quote.Contact}}</td>
+          </tr>
+          <tr>
+            <td class="lblclass">TaskType</td>
+            <td class="dtaclass">{{quote.TaskType}}</td>
+          </tr>
+          
+          <tr>
+            <td class="lblclass">Due Date</td>
+            <td  class="dtaclass">{{quote.DueDate}}</td>
+          </tr>
+          
+          
+          
+          <tr>
+            <td   class="lblclass">Task</td>
+            <td  class="dtaclass">{{quote.Task}}</td>
+          </tr>
+    </table>
+</div>
+ 
+
+<ng-template #notfound>
+  <img height="200" width="250" src="assets/notfound.png">
+         
+</ng-template>

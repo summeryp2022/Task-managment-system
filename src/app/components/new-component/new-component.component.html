@@ -1,0 +1,58 @@
+<div>
+    <h5> Structural Directive & Attribute Directive</h5>
+    <button type="button" (click)="ToggleTable()">Toggle Table</button>
+    <div *ngIf="flag;else other_content">
+        <h5> NgIf and NgFor Directive</h5>
+        <table [ngStyle]="styleObj">
+            <tr>
+                <th>User ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th> Phone Number </th>
+                <th>Email Address</th>
+                <th>Local Variables</th>
+            </tr>
+
+            <tr *ngFor="let employee of employees; let i = index; let e= even, let o=odd"
+                [ngClass]="{'oddClass':o,'evenClass': e}">
+                <td>{{employee.userId}}</td>
+                <td>{{employee.firstName}}</td>
+                <td>{{employee.lastName}}</td>
+                <td>{{employee.phoneNumber}}</td>
+                <td>{{employee.emailAddress}}</td>
+                <td>{{o}}</td>
+            </tr>
+        </table>
+        <br>
+        <button type="button" (click)="ToggleBorder()"> Toggle Table border</button>
+    </div>
+
+
+    <hr>
+    <!-- if else demo -->
+    <ng-template #other_content>
+        <h5> ngSwitch Directive</h5>
+        <table [ngStyle]="styleObj">
+            <tr>
+                <th>User ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th> Phone Number </th>
+                <th>Email Address</th>
+                <th>Local Variables</th>
+            </tr>
+            <!-- case statement demo -->
+            <tr *ngFor="let employee of employees; let i = index; let e= even, let o=odd" [ngSwitch]="employee.userId"
+                [ngClass]="{'oddClass':o,'evenClass': e}">
+                <td *ngSwitchCase="1" [ngStyle]="{'background-color':'red'}">{{employee.userId}}</td>
+                <td *ngSwitchCase="2" [ngStyle]="{'background-color':'yellow','font-weight':'bold'}">{{employee.userId }}</td>
+                <td *ngSwitchCase="3" [ngStyle]="{'background-color':'green','font-weight':'bold'}">{{employee.userId }}</td>
+                <td *ngSwitchCase="4" [ngStyle]="{'background-color':'purple','font-weight':'bold'}">{{employee.userId }}</td>
+                <td *ngSwitchDefault> {{employee.userId}}</td>
+                <td>{{employee.firstName}}</td>
+                <td>{{employee.lastName}}</td>
+                <td>{{employee.phoneNumber}}</td>
+                <td>{{employee.emailAddress}}</td>
+                <td>{{o}}</td>
+            </tr>
+        </table>
